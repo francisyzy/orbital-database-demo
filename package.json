@@ -2,20 +2,21 @@
   "name": "orbital-database-demo",
   "version": "1.0.0",
   "description": "Demo ORM",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "test": "echo noTest!"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
-    "express": "^4.18.2",
     "mysql2": "^3.3.1",
     "sequelize": "^6.31.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22",
     "prettier": "^2.8.8"
   }
 }
