@@ -5,6 +5,7 @@ const connection = mysql.createConnection({
   user: 'root',
   password: 'password',
   database: 'orbital-demo',
+  ssl: { rejectUnauthorized: true },
 });
 
 // Connecting to the database

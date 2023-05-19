@@ -6,6 +6,7 @@ const connection = mysql.createConnection({
   user: 'root',
   password: 'password',
   database: 'orbital-demo',
+  ssl: { rejectUnauthorized: true },
 });
 
 const email = 'user1@example.com';

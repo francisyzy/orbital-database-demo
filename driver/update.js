@@ -2,11 +2,12 @@ const mysql = require('mysql2');
 
 // Creating a connection
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'orbital-demo',
-  });
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'orbital-demo',
+  ssl: { rejectUnauthorized: true },
+});
 
 // Connecting to the database
 connection.connect((err) => {
@@ -32,4 +33,3 @@ connection.connect((err) => {
     connection.end();
   });
 });
-
