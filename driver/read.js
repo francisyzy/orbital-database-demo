@@ -1,16 +1,13 @@
 const mysql = require('mysql2');
 
 // Creating a connection
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'password',
-//   database: 'orbital-demo',
-// });
-
-const connectionUrl = 'mysql://83fjwlxnk9soiduq6erw:pscale_pw_QPZ1Ie3dMKyplC3mFZeRKzGRAPdys53Rp4TAEwJCJoA@aws.connect.psdb.cloud/orbital-demo?ssl={"rejectUnauthorized":true}';
-const connection = mysql.createConnection(connectionUrl);
-
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'orbital-demo',
+  ssl: { rejectUnauthorized: true },
+});
 
 const email = 'user1@example.com';
 // const password = 'hash1';
