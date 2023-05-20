@@ -92,8 +92,12 @@ const Note = sequelize.define('note', {
 })
 
 // FOREIGN KEY (notebook_id) REFERENCES notebooks(id)
-Note.Notebook = Note.belongsTo(Notebook)
-Notebook.Notes = Notebook.hasMany(Note);
+Note.Notebook = Note.belongsTo(Notebook, {
+  foreignKey: "notebook_id"
+})
+Notebook.Notes = Notebook.hasMany(Note, {
+  foreignKey: "notebook_id"
+});
 
 (async () => {
   // Dependency-less insert
