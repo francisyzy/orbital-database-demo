@@ -6,6 +6,7 @@ const connection = mysql.createConnection({
   password: 'password',
   database: 'orbital-demo',
   ssl: { rejectUnauthorized: true },
+  multipleStatements: true,
 });
 
 // Connecting to the database
@@ -36,19 +37,13 @@ connection.connect((err) => {
     INSERT INTO notes (title, content, created_at, notebook_id) VALUES ('Note 3', 'Content 3', NOW(), 1);
   `;
 
-  const queries = insertStatements
-    .split(';')
-    .filter((query) => query.trim() !== '');
+  connection.query(insertStatements, (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      return;
+    }
 
-  queries.forEach((query) => {
-    connection.query(query, (err, results) => {
-      if (err) {
-        console.error('Error executing query:', err);
-        return;
-      }
-
-      console.log('Query executed successfully:', query);
-    });
+    console.log('Query executed successfully:', query);
   });
 
   // Closing the connection

@@ -7,6 +7,7 @@ const connection = mysql.createConnection({
   password: 'password',
   database: 'orbital-demo',
   ssl: { rejectUnauthorized: true },
+  multipleStatements: true,
 });
 
 // Connecting to the database
@@ -49,19 +50,13 @@ connection.connect((err) => {
     );
   `;
 
-  const queries = createTablesQuery
-    .split(';')
-    .filter((query) => query.trim() !== '');
+  connection.query(createTablesQuery, (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      return;
+    }
 
-  queries.forEach((query) => {
-    connection.query(query, (err, results) => {
-      if (err) {
-        console.error('Error executing query:', err);
-        return;
-      }
-
-      console.log('Query executed successfully:', query);
-    });
+    console.log('Query executed successfully:', createTablesQuery);
   });
 
   // Closing the connection
