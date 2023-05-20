@@ -64,7 +64,7 @@ User.Notebooks = User.hasMany(Notebook, {
   foreignKey: "created_by"
 })
 
-const Note = sequelize.define('note', {
+const Note = sequelize.define('notes', {
   id: {  // id INT AUTO_INCREMENT PRIMARY KEY
     type: DataTypes.INTEGER,
     autoIncrement: true,
